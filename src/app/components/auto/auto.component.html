@@ -1,0 +1,30 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>FABRICATION DATE</th>
+            <th>MODEL</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let auto of autoList">
+            <td>{{auto.id}}</td>
+            <td>{{auto.name}}</td>
+            <td>{{auto.date_fab}}</td>
+            <td>{{auto.model}}</td>
+            <td><button (click)="view(auto.id)">VIEW</button></td>
+            <td><button (click)="delete(auto.id)">DELETE</button></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td><input readonly/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td colspan="2"><button>ADD</button></td>
+        </tr>
+    </tfoot>
+</table>
