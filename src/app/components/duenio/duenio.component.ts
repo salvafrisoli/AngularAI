@@ -58,6 +58,7 @@ export class DuenioComponent implements OnInit {
     this.duenio.name = this.name?.value
     this.duenio.age = this.age?.value
     this.duenio.birthday = this.birthday?.value
+    this.duenio.country = this.country?.value
 
     this.duenioService.save(this.duenio).subscribe(() => {
       location.reload()
@@ -70,7 +71,8 @@ export class DuenioComponent implements OnInit {
     this.form.setValue({
       name: "duenio.name",
       age: "duenio.age",
-      birthday: "duenio.birthday"
+      birthday: "duenio.birthday",
+      country: "duenio.country"
     });
 
   }
