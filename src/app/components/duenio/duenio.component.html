@@ -1,1 +1,61 @@
-<p>duenio works!</p>
+<div class="container">
+    <button class="btn btn-primary" (click)="irAPagina('auto')">AUTOS</button>
+
+    <table>
+        <div class="tablas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>EDAD</th>
+                    <th>FECHA NACIMIENTO</th>
+                    <th>PAIS</th>
+
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let duenio of duenioList">
+                    <td>{{duenio.id}}</td>
+                    <td>{{duenio.name}}</td>
+                    <td>{{duenio.age}}</td>
+                    <td>{{duenio.birthday}}</td>
+                    <td>{{duenio.country}}</td>
+                    <td><button (click)="view(duenio)">VIEW</button></td>
+                    <td><button (click)="update(duenio)">UPDATE</button></td>
+                    <td><button (click)="delete(duenio.id)">DELETE</button></td>
+                </tr>
+                <tr [formGroup]="duenioForm">
+                    <td>
+                        <input formControlName="id" readonly />
+                    </td>
+                    <td>
+                        <input formControlName="name" />
+                        <div class="alert alert-danger mt-2" [hidden]="name.valid || name.pristine"
+                            style="text-align: center; ">Campo obligatorio</div>
+                        <!-- <p style="color: red" *ngIf="name.touched && name.errors?.required">campo obligatorio</p> -->
+                    </td>
+                    <td>
+                        <input formControlName="age" />
+                        <div class="alert alert-danger mt-2" [hidden]="age.valid || age.pristine"
+                            style="text-align: center; ">Campo obligatorio</div>
+
+                    </td>
+                    <td>
+                        <input formControlName="birthday" />
+                        <div class="alert alert-danger mt-2" [hidden]="birthday.valid || birthday.pristine"
+                            style="text-align: center; ">Campo obligatorio</div>
+                    </td>
+                    <td>
+                        <input formControlName="country" />
+                        <div class="alert alert-danger mt-2" [hidden]="country.valid || country.pristine"
+                            style="text-align: center; ">Campo obligatorio</div>
+                    </td>
+                    <td colspan="2"><button (click)="save() ">ADD</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </div>
+    </table>
+</div>

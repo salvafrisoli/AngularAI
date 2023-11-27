@@ -1,0 +1,42 @@
+* {
+    font-family: sans-serif;
+}
+
+/* .tablas{
+    display: flex;
+    flex-direction: column;
+} */
+
+thead {
+    background: rgb(0, 0, 0, 0.2);
+}
+
+th{
+    padding: 20px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+table {
+    
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     min-height: 100vh;
+     
+}
+td{
+    padding: 15px;
+    border-bottom: solid 1px rgb(0, 0, 0, 0.2);
+}
+
+tbody tr{
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background-color: rgb(0, 0, 0, 0.2);
+}
+tbody{
+    background-color: aquamarine;
+}
