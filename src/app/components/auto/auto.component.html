@@ -1,53 +1,69 @@
-
-
+<!-- <script type="text/javascript">
+    function save1() {
+        document.getElementById("save").style.display = "none";
+        document.getElementById("update").style.display = "block";
+    }
+    function update1() {
+        document.getElementById("save").style.display = "block";
+        document.getElementById("update").style.display = "none";
+    }
+</script> -->
 <div class="container">
-<button class="btn btn-primary" (click)="irAPagina('duenio')">DUENIOS</button>
+    <button class="btn btn-primary" (click)="irAPagina('duenio')">DUENIOS</button>
 
-<table>
-    <div class="tablas">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>NOMBRE</th>
-            <th>FECHA DE FABRICACION</th>
-            <th>MODELO</th>
-            <th colspan="2"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let auto of autoList">
-            <td>{{auto.id}}</td>
-            <td>{{auto.name}}</td>
-            <td>{{auto.date_fab}}</td>
-            <td>{{auto.model}}</td>  
-            <td><button (click)="view(auto)">VIEW</button></td>
-            <td><button (click)="update(auto)">UPDATE</button></td>
-            <td><button (click)="delete(auto.id)">DELETE</button></td>
-        </tr>
-            <tr [formGroup]="autoForm">
+    <table>
+        <div class="tablas">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>FECHA DE FABRICACION</th>
+                    <th>MODELO</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let auto of autoList">
+                    <td>{{auto.id}}</td>
+                    <td>{{auto.name}}</td>
+                    <td>{{auto.date_fab}}</td>
+                    <td>{{auto.model}}</td>
+                    <!-- <td><button onclick="save1()" (click)="view(auto)">VIEW</button></td> -->
+                    <td><button (click)="view(auto)">VIEW</button></td>
+
+                    <td><button (click)="delete(auto.id)">DELETE</button></td>
+                </tr>
+                <tr [formGroup]="autoForm">
                     <td>
-                        <input formControlName="id" readonly/>
+                        <input formControlName="id" readonly />
                     </td>
                     <td>
-                        <input formControlName="name"/>
-                        <div class="alert alert-danger mt-2" [hidden]="name.valid || name.pristine" style="text-align: center; ">Campo obligatorio</div>
+                        <input formControlName="name" />
+                        <div class="alert alert-danger mt-2" [hidden]="name.valid || name.pristine"
+                            style="text-align: center; ">Campo obligatorio</div>
                         <!-- <p style="color: red" *ngIf="name.touched && name.errors?.required">campo obligatorio</p> -->
                     </td>
                     <td>
-                        <input formControlName="date_fab"/>
-                        <div class="alert alert-danger mt-2" [hidden]="date_fab.valid || date_fab.pristine" style="text-align: center; ">Campo obligatorio</div>
+                        <input formControlName="date_fab" />
+                        <div class="alert alert-danger mt-2" [hidden]="date_fab.valid || date_fab.pristine"
+                            style="text-align: center; ">Campo obligatorio</div>
 
                     </td>
                     <td>
-                        <input formControlName="model"/>
-                        <div class="alert alert-danger mt-2" [hidden]="model.valid || model.pristine" style="text-align: center; ">Campo obligatorio</div>
+                        <input formControlName="model" />
+                        <div class="alert alert-danger mt-2" [hidden]="model.valid || model.pristine"
+                            style="text-align: center; ">Campo obligatorio</div>
 
                     </td>
-                    <td colspan="2"><button (click)="save() ">ADD</button></td>
-                </tr>      
-    </tbody>
-    <tfoot>
-    </tfoot>
-</div>
-</table>
+                    <td *ngIf="addbtn"><button id="save_btn" (click)="save()">ADD</button></td>
+                    <!-- <td id="update"><button id="update_btn" onclick="update1()" (click)="update(auto)">UPDATE</button></td> -->
+                    <td *ngIf="updatebtn"><button (click)="update(auto)">UPDATE</button></td>
+                            
+                    
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </div>
+    </table>
 </div>

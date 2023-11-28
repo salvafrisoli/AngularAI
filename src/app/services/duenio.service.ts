@@ -24,6 +24,6 @@ export class DuenioService {
     return this.http.post(this.url + '/' + id + '/delete', null)
   }
   update(d: Duenio): Observable<any>{
-    return this.http.post(this.url + '/' + d.id + '/update', null)
+    return this.http.post(this.url + '/' + d.id + '/update', d)
   }
 }

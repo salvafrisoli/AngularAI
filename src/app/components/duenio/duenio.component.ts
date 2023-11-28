@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./duenio.component.css']
 })
 export class DuenioComponent implements OnInit {
+  addbtn:boolean = true;
+  updatebtn: boolean = false;
+
   autoList = new Array<Auto>()
   duenioList = new Array<Duenio>()
   duenio = new Duenio()
@@ -68,11 +71,15 @@ export class DuenioComponent implements OnInit {
     })
   }
   view(duenio: Duenio) {
-    this.form.setValue({
-      name: "duenio.name",
-      age: "duenio.age",
-      birthday: "duenio.birthday",
-      country: "duenio.country"
+    this.addbtn = false;
+    this.updatebtn = true;
+
+    this.duenioForm.setValue({
+      id: duenio.id,
+      name: duenio.name,
+      age: duenio.age,
+      birthday: duenio.birthday,
+      country: duenio.country
     });
 
   }
@@ -80,6 +87,15 @@ export class DuenioComponent implements OnInit {
 
 
   update(duenio: Duenio) {
+    this.addbtn = true;
+    this.updatebtn = false;
+
+    duenio.id = this.id?.value
+    duenio.name = this.name?.value
+    duenio.age = this.age?.value
+    duenio.birthday = this.birthday?.value
+    duenio.country = this.country?.value
+
     this.duenioService.update(duenio).subscribe(() => {
       location.reload()
     }, error => {

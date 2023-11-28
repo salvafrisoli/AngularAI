@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./auto.component.css']
 })
 export class AutoComponent implements OnInit {
+  addbtn:boolean = true;
+  updatebtn: boolean = false;
+
   autoList = new Array<Auto>()
   duenioList = new Array<Duenio>()
   auto = new Auto()
@@ -64,14 +67,26 @@ export class AutoComponent implements OnInit {
     })
   }
   view(auto: Auto) {
-    this.form.setValue({
-      name: "auto.name",
-      date_fab: "auto.date_fab",
-      model: "auto.model"
+    this.addbtn = false;
+    this.updatebtn = true;
+
+    this.autoForm.setValue({
+      id:auto.id,
+      name: auto.name,
+      date_fab: auto.date_fab,
+      model: auto.model
     });
 
   }
   update(auto: Auto) {
+    this.addbtn = true;
+    this.updatebtn = false;
+
+    auto.id = this.id?.value
+    auto.name = this.name?.value
+    auto.date_fab = this.date_fab?.value
+    auto.model = this.model?.value
+
     this.autoService.update(auto).subscribe(() => {
       location.reload()
     }, error => {

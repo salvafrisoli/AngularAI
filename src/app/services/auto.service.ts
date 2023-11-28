@@ -24,6 +24,6 @@ export class AutoService {
     return this.http.post(this.url + '/' + id + '/delete', null)
   }
   update(a: Auto): Observable<any>{
-    return this.http.post(this.url + '/' + a.id + '/update', null)
+    return this.http.post(this.url + '/' + a.id + '/update', a)
   }
 }
